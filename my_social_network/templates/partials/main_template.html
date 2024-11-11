@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    {% load static %}
+    {% include 'partials/head.html' %}
+</head>
+<body>
+    <header>
+        <nav>{% include 'partials/navigation.html' %}</nav>
+    {% block header %}
+    {% endblock %}
+    </header>
+    <main class="indentation">{% block main %}{% endblock %}</main>
+    <footer>{% block footer %}{% endblock %}
+    <small>&copy; Mishanya's project 2024</small>
+    </footer>
+</body>
+</html>

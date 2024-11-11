@@ -1,0 +1,45 @@
+.logo_text{
+    color: #88DEDE;
+    text-decoration: none;
+
+    transition: 500ms;
+}
+.logo_text:hover{
+    color: #008888;
+    text-decoration: none;
+
+    transition: 500ms;
+}
+.main_page_block{
+    margin-top: 15%;
+    width: 20%;
+    align-self: center;
+    border: 3px solid black;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.button {
+    padding: 12px 24px;
+    background-color: #4CAF50; /* Основной цвет кнопки */
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Легкая тень */
+    transition: all 0.2s ease; /* Плавный переход для всех состояний */
+}
+
+.button:hover {
+    background-color: #45a049; /* Цвет при наведении */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Усиление тени */
+    transform: translateY(-2px); /* Легкий подъем */
+}
+
+.button:active {
+    background-color: #3e8e41; /* Цвет при нажатии */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Уменьшение тени */
+    transform: scale(0.98); /* Незначительное уменьшение */
+}

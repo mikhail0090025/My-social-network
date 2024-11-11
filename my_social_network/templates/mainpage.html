@@ -1,0 +1,23 @@
+{% extends 'partials/main_template.html' %}
+
+{% block title %}{% endblock %}
+
+{% block header %}
+
+{% endblock %}
+
+{% block main %}
+<center>
+    <section class="main_page_block">
+        <p>Do you have a profile?</p>
+        <a href="{% url 'login' %}"><button class="button">Login</button></a><br>
+        <p>You don't?</p>
+        <a href="{% url 'registration' %}"><button class="button">Registration</button></a>
+    </section>
+</center>
+{% load static %}
+<!-- Scripts here -->
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
