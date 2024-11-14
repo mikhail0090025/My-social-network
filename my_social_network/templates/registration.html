@@ -8,28 +8,26 @@
 
 {% block main %}
 <section>
-    <form action="{% url 'registration' %}" method="post">
+    <form action="{% url 'registration' %}" method="post" id="reg_form">
         <section>
             <label for="username">Username: </label>
-            <input type="text" name="username" id="username">
+            <input type="text" name="username" id="username" minlength="7">
         </section>
+        <section>
             <label for="name">Name: </label>
-            <input type="text" name="name" id="name">
-        <section>
-            <label for="surname">Surname: </label>
-            <input type="text" name="surname" id="surname">
+            <input type="text" name="name" id="name" minlength="3">
         </section>
         <section>
             <label for="surname">Surname: </label>
-            <input type="text" name="surname" id="surname">
+            <input type="text" name="surname" id="surname" minlength="4">
         </section>
         <section>
             <label for="password">Password: </label>
-            <input type="password" name="password" id="password">
+            <input type="password" name="password" id="password" minlength="12">
         </section>
         <section>
             <label for="r_password">Repeat password: </label>
-            <input type="password" name="r_password" id="r_password">
+            <input type="password" name="r_password" id="r_password" minlength="12">
         </section>
         <section>
             <label for="birth_date">Birth date: </label>
@@ -40,6 +38,42 @@
 </section>
 {% load static %}
 <!-- Scripts here -->
+<script>
+$('#reg_form').on('submit', function (event) {
+    event.preventDefault();
+    var username = $('#username').val();
+    var name = $('#name').val();
+    var surname = $('#surname').val();
+    var password = $('#password').val();
+    var r_password = $('#r_password').val();
+    var birth_date = $('#birth_date').val();
+    console.log("Username: " + username);
+    console.log("Name: " + name);
+    console.log("Surname: " + surname);
+    console.log("Password: " + password);
+    console.log("Repeated password: " + r_password);
+    console.log("Birth date: " + birth_date);
+    $.ajax({
+        url: "{% url 'registration' %}",
+        method: 'POST',
+        data: {
+            username: username,
+            name: name,
+            surname: surname,
+            password: password,
+            r_password: r_password,
+            birth_date: birth_date
+        },
+        success: function(response) {
+          console.log('Success:', response);
+        },
+        error: function(error) {
+          console.error('Error:', error);
+        }
+    });
+});
+</script>
+ <!-- <script src="{% static 'js/registration.js' %}"></script> -->
 {% endblock %}
 
 {% block footer %}

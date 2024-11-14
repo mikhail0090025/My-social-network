@@ -31,6 +31,7 @@ def registration(request):
         if request.method == 'GET':
             return render(request, 'registration.html')
         elif request.method == 'POST':
+            print(request.body)
             return HttpResponse("", status=200)
         else:
             return HttpResponse(f"Bad request method: {request.method} method is not supported!", status=400)
