@@ -1,3 +1,11 @@
+var csrfToken = $('input[name="csrfmiddlewaretoken"]').attr('value');
+// Global header for all ajax requests
+$.ajaxSetup({
+    headers: {
+        'X-CSRFToken': csrfToken
+    }
+});
+
 $('#reg_form').on('submit', function (event) {
     event.preventDefault();
     var username = $('#username').val();

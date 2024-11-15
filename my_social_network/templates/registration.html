@@ -33,12 +33,21 @@
             <label for="birth_date">Birth date: </label>
             <input type="date" name="birth_date" id="birth_date">
         </section>
+        {% csrf_token %}
         <input type="submit" value="Registration">
     </form>
 </section>
 {% load static %}
 <!-- Scripts here -->
 <script>
+var csrfToken = $('input[name="csrfmiddlewaretoken"]').attr('value');
+// Global header for all ajax requests
+$.ajaxSetup({
+    headers: {
+        'X-CSRFToken': csrfToken
+    }
+});
+
 $('#reg_form').on('submit', function (event) {
     event.preventDefault();
     var username = $('#username').val();
@@ -47,6 +56,10 @@ $('#reg_form').on('submit', function (event) {
     var password = $('#password').val();
     var r_password = $('#r_password').val();
     var birth_date = $('#birth_date').val();
+    if(password != r_password){
+        alert("Passwords are not same!");
+        return;
+    }
     console.log("Username: " + username);
     console.log("Name: " + name);
     console.log("Surname: " + surname);
