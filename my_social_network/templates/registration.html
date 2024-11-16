@@ -1,6 +1,11 @@
 {% extends 'partials/main_template.html' %}
 
-{% block title %}{% endblock %}
+{% block title %}Registration page{% endblock %}
+
+{% block styles_and_scripts %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'registration.css' %}">
+{% endblock %}
 
 {% block header %}
     <h2>Registration</h2>
@@ -36,6 +41,7 @@
         {% csrf_token %}
         <input type="submit" value="Registration">
     </form>
+    <p><i><b id="error_text"></b></i></p>
 </section>
 {% load static %}
 <!-- Scripts here -->
@@ -64,7 +70,6 @@ $('#reg_form').on('submit', function (event) {
     console.log("Name: " + name);
     console.log("Surname: " + surname);
     console.log("Password: " + password);
-    console.log("Repeated password: " + r_password);
     console.log("Birth date: " + birth_date);
     $.ajax({
         url: "{% url 'registration' %}",
@@ -74,14 +79,15 @@ $('#reg_form').on('submit', function (event) {
             name: name,
             surname: surname,
             password: password,
-            r_password: r_password,
             birth_date: birth_date
         },
         success: function(response) {
-          console.log('Success:', response);
+            console.log('Success:', response);
         },
         error: function(error) {
-          console.error('Error:', error);
+            var error_text = 'Error: ' + error.responseText;
+            console.error(error_text);
+            $('#error_text').text(error_text);
         }
     });
 });
