@@ -2,6 +2,8 @@
 
 {% block title %}{% endblock %}
 
+{% block styles_and_scripts %}{% endblock %}
+
 {% block header %}
     
 {% endblock %}
